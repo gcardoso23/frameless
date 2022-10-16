@@ -1,26 +1,33 @@
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+const dirApp = path.join(__dirname, 'app');
+const dirPublic = path.join(__dirname, 'public');
 
 module.exports = {
-  entry: path.resolve(__dirname, './src/index.js'),
+  entry: [
+    path.join(dirApp, 'index.js')
+  ],
   output: {
     filename: 'bundle.[contenthash].js',
-    path: path.resolve(__dirname, './public')
+    path: dirPublic
   },
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'index.css'
+    }),
     new CopyPlugin({
       patterns: [
         { 
-          from: path.resolve(__dirname, './src/static'),
-          to: path.resolve(__dirname, './public/static')
+          from: path.join(dirApp, '/static'),
+          to: path.join(dirPublic, '/static')
         }
       ]
     }),
-    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './src/views/index.html'),
+      template: path.join(dirApp, '/views/index.html'),
       minify: false
     }),
   ],
@@ -31,6 +38,17 @@ module.exports = {
         use: {
           loader: 'babel-loader'
         }
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader, {
+            loader: 'css-loader',
+            options: { url: false }
+          },
+          'postcss-loader',
+          'sass-loader'
+        ],
       },
     ]
   }
