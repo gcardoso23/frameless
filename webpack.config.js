@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const dirApp = path.join(__dirname, 'app');
-const dirPublic = path.join(__dirname, 'public');
+const dirDist = path.join(__dirname, 'dist');
 
 module.exports = {
   entry: [
@@ -12,7 +12,8 @@ module.exports = {
   ],
   output: {
     filename: 'bundle.[contenthash].js',
-    path: dirPublic
+    path: dirDist,
+    clean: true
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -22,7 +23,7 @@ module.exports = {
       patterns: [
         { 
           from: path.join(dirApp, '/static'),
-          to: path.join(dirPublic, '/static')
+          to: path.join(dirDist, '/static')
         }
       ]
     }),
