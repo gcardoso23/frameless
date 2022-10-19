@@ -1,1 +1,5 @@
-@import './base/reset';
+// Layers go from generic to specific, so later rules win on source order
+// instead of extra specificity.
+@use 'base/reset';
+@use 'base/root';
+@use 'base/global';

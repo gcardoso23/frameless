@@ -1,0 +1,8 @@
+@use 'sass:math';
+
+/// Converts pixels to rem, so sizes scale with the user's font size.
+/// @example scss
+///   font-size: rem(18px); // 1.125rem
+@function rem($px, $base: 16px) {
+  @return math.div($px, $base) * 1rem;
+}

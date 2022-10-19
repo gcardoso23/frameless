@@ -1,0 +1,50 @@
+// A small modern reset, based on Andy Bell's and Josh Comeau's.
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+// Only remove list styles when the markup opts in: `list-style: none` on
+// its own makes Safari/VoiceOver stop announcing the element as a list.
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+  padding: 0;
+}

@@ -1,0 +1,4 @@
+// Sass-only helpers. Nothing here outputs CSS, so any partial can
+// `@use '../abstracts' as *;` without duplicating styles.
+@forward 'breakpoints';
+@forward 'functions';
