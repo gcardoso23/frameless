@@ -41,9 +41,9 @@ $easings: (
   --color-accent: #3b5bdb;
 
   // Typography
-  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
-    Arial, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-sans: system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Helvetica Neue',
+    'Arial', sans-serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', 'Menlo', 'Consolas', monospace;
   --text-sm: #{rem(14px)};
   --text-base: #{rem(16px)};
   --text-lg: #{rem(20px)};
