@@ -9,8 +9,148 @@
     />
     <title>Boilerplate JS</title>
     <link rel="icon" href="static/favicon.svg" type="image/svg+xml" />
+    <!-- Lets CSS style the enhanced state before the bundle loads. -->
+    <script>
+      document.documentElement.classList.add('js');
+    </script>
   </head>
-  <body>
-    <h1>Boilerplate JS</h1>
+  <body data-page="home">
+    <main class="home">
+      <header>
+        <h1 class="home__title">Boilerplate JS</h1>
+        <p class="home__lead">
+          Webpack, Sass and vanilla JavaScript, with a small component pattern
+          and nothing else to learn.
+        </p>
+      </header>
+
+      <section aria-labelledby="how-it-works">
+        <h2 class="home__subtitle" id="how-it-works">How it works</h2>
+
+        <div class="accordion" data-accordion>
+          <div class="accordion__item">
+            <h3 class="accordion__heading">
+              <button
+                class="accordion__button"
+                type="button"
+                aria-expanded="true"
+                data-accordion-button
+              >
+                <span>Pages</span>
+                <svg
+                  class="accordion__icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+            </h3>
+            <div class="accordion__panel" data-accordion-panel>
+              <div class="accordion__content">
+                <p>
+                  Every HTML file in <code>app/views</code> becomes a page. Name
+                  it with <code>data-page</code> on the
+                  <code>&lt;body&gt;</code> and map that name to a class in
+                  <code>app/index.js</code>. Each page's script is its own
+                  chunk, loaded only where it is used.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion__item">
+            <h3 class="accordion__heading">
+              <button
+                class="accordion__button"
+                type="button"
+                data-accordion-button
+              >
+                <span>Components</span>
+                <svg
+                  class="accordion__icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+            </h3>
+            <div class="accordion__panel" data-accordion-panel>
+              <div class="accordion__content">
+                <p>
+                  A component extends <code>Component</code>, names the child
+                  elements it needs with selectors and attaches its listeners. A
+                  page lists components by selector and creates one for every
+                  match, which is how this accordion is set up.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion__item">
+            <h3 class="accordion__heading">
+              <button
+                class="accordion__button"
+                type="button"
+                data-accordion-button
+              >
+                <span>Styles</span>
+                <svg
+                  class="accordion__icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+            </h3>
+            <div class="accordion__panel" data-accordion-panel>
+              <div class="accordion__content">
+                <p>
+                  Colors, spacing and motion are CSS custom properties, so dark
+                  mode and reduced motion are just overrides. Sass covers what
+                  CSS can't do on its own: breakpoints and helper functions.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion__item">
+            <h3 class="accordion__heading">
+              <button
+                class="accordion__button"
+                type="button"
+                data-accordion-button
+              >
+                <span>Motion</span>
+                <svg
+                  class="accordion__icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+            </h3>
+            <div class="accordion__panel" data-accordion-panel>
+              <div class="accordion__content">
+                <p>
+                  Every transition uses a duration token and an easing curve.
+                  When the system asks for reduced motion, all durations drop to
+                  zero and nothing animates.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="home__footer">
+        <a href="https://github.com/gcardoso23/boilerplate-js"
+          >Source on GitHub</a
+        >
+      </footer>
+    </main>
   </body>
 </html>

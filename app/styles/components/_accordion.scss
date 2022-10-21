@@ -1,0 +1,98 @@
+@use '../abstracts' as *;
+
+.accordion {
+  border-top: 1px solid var(--color-border);
+}
+
+.accordion__item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.accordion__button {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-4) 0;
+  font-weight: 600;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  transition: color var(--duration-fast) var(--ease-out-quad);
+
+  &:hover {
+    color: var(--color-accent);
+  }
+}
+
+.accordion__icon {
+  flex-shrink: 0;
+  width: rem(20px);
+  height: rem(20px);
+  fill: none;
+  stroke: currentcolor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+  transition: transform var(--duration-base) var(--ease-out-quart);
+
+  [aria-expanded='true'] > & {
+    transform: rotate(180deg);
+  }
+}
+
+.accordion__content {
+  padding-bottom: var(--space-6);
+  color: var(--color-text-muted);
+}
+
+// Panels only collapse once JS is running (see the inline script in the
+// views), so the content stays readable if the bundle fails to load.
+.js {
+  .accordion__panel {
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+
+    &.is-expanded {
+      visibility: visible;
+    }
+  }
+
+  .accordion__content {
+    opacity: 0;
+    transform: translateY(calc(var(--space-2) * -1));
+  }
+
+  .is-expanded > .accordion__content {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+// Transitions are switched on after setup, so panels that start open don't
+// animate on page load.
+.accordion.is-ready {
+  .accordion__panel {
+    // Delaying `visibility` until the collapse ends keeps the content visible
+    // while it animates, then hides it from keyboard and screen readers.
+    transition: height var(--duration-slow) var(--ease-out-expo),
+      visibility 0s linear var(--duration-slow);
+
+    &.is-expanded {
+      transition: height var(--duration-slow) var(--ease-out-expo);
+    }
+  }
+
+  .accordion__content {
+    transition: opacity var(--duration-base) var(--ease-out-quad),
+      transform var(--duration-slow) var(--ease-out-expo);
+  }
+
+  .is-expanded > .accordion__content {
+    transition-delay: var(--duration-fast);
+  }
+}
