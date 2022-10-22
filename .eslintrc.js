@@ -27,5 +27,11 @@ module.exports = {
         sourceType: 'script',
       },
     },
+    {
+      files: ['**/*.test.js'],
+      env: {
+        jest: true,
+      },
+    },
   ],
 };
