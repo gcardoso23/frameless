@@ -1,7 +1,28 @@
 {
-  "name": "boilerplate",
+  "name": "frameless",
   "version": "1.0.0",
-  "description": "",
+  "private": true,
+  "description": "Webpack, Sass and vanilla JavaScript starter with a small component pattern, design tokens and accessible defaults.",
+  "keywords": [
+    "boilerplate",
+    "starter",
+    "webpack",
+    "sass",
+    "vanilla-js",
+    "components",
+    "accessibility"
+  ],
+  "homepage": "https://github.com/gcardoso23/frameless#readme",
+  "bugs": "https://github.com/gcardoso23/frameless/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gcardoso23/frameless.git"
+  },
+  "license": "MIT",
+  "author": "Gustavo Cardoso",
+  "engines": {
+    "node": ">=16"
+  },
   "scripts": {
     "dev": "webpack serve --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
@@ -12,8 +33,6 @@
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
-  "author": "Gustavo Cardoso",
-  "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.19.3",
     "@babel/preset-env": "^7.19.4",

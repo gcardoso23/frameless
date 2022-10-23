@@ -1,1 +1,0 @@
-Simple HTML, Sass and JS boilerplate
